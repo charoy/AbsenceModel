@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+Scolarité --> (Saisir une justification d'absence)
+Scolarité --> (Saisir une absence)
+Scolarité --> (Saisir les absences pour un groupe)
+Scolarité --> (Générer un rapport d'absences pour une année)
+Enseignant --> (Saisir les absences pour le groupe du cours)
+Enseignant --> (Annuler une absence)
+Enseignant --> (Ajouter une absence à un ancien cours)
+Enseignant --> (Accéder à une liste d'étudiants)
+Enseignant --> (Lister les étudiants absents à mes cours)
+Etudiant --> (Accéder à ses absences)
+Etudiant --> (Changer ses préférences de notification)
+Etudiant --> (Authentification)
+(Authentification) -- CAS
+@enduml
+
+

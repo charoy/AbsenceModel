@@ -1,0 +1,63 @@
+@startuml
+class GestionAbsences {
+  enregistrerJustification()
+  ajouterAbsence()
+  evenementCourant(Enseignant)
+}
+
+class ADE {
+  getEvenementCourant(String enseignant)
+  List<String> getGroup(String nom)
+}
+
+class Evenement <<entity>>
+
+abstract class Personne <<entity>>
+
+class Groupe  <<entity>>
+
+class Absence <<entity>> {
+  int etat
+}
+
+class Etudiant <<entity>>
+
+class Enseignant <<entity>>
+
+Interface CASClient {
+  login()
+  String getPrincipal()
+  String getRole()
+}
+
+note top: manage the login
+
+Personne <|-- Etudiant
+Personne <|-- Enseignant
+
+Groupe o-- Etudiant
+
+Evenement -- Enseignant
+Evenement -- Groupe
+Evenement -- Absence
+Absence -- Etudiant
+
+GestionAbsences .. Personne
+GestionAbsences .. Evenement
+GestionAbsences .. ADE
+GestionAbsences .. DataAccessObject
+
+class DataAccessObject {
+  store(Object o)
+  Object retrieve(String id)
+  List<Object> retrieveAll()
+  List<Object> search(String query)
+}
+
+class EtudiantUI {
+}
+
+EtudiantUI .. GestionAbsences
+
+ScolaritéUI .. GestionAbsences
+@enduml
